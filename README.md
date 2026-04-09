@@ -1,63 +1,78 @@
-===========================================================================
-      SISTEMA DI BACKUP AUTOMATICO E INVISIBILE - GUIDA OPERATIVA v1.0
-===========================================================================
+# 🛠️ Sistema di Backup Automatico e Invisibile
 
-1. REQUISITO FONDAMENTALE
----------------------------------------------------------------------------
-- NOME UNITÀ USB: La chiavetta DEVE essere rinominata come: MIA_USB
-  Il nome è essenziale per le funzioni di espulsione automatica.
+![Versione](https://img.shields.io/badge/Versione-1.0-blue?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Operativo-success?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?style=for-the-badge)
 
-2. STRUTTURA DEL KIT (FILE DA IMPOSTARE COME "NASCOSTI")
----------------------------------------------------------------------------
-- INSTALLA.bat          : Motore di installazione con controllo Lock File.
-- Documenti.vbs         : Lanciatore invisibile (ponte tra USB e PC).
-- avvia_nascosto.vbs    : Script di sistema per l'invisibilità di PowerShell.
-- cercafiles.ps1        : Motore v1.0 (Copia, Pulizia e Auto-Espulsione).
-- RIPRISTINA_NOMI.bat   : Utility da usare solo sul proprio PC.
+Guida operativa per il kit di backup silente con gestione dei processi in background e auto-espulsione sicura.
 
-3. INTERFACCIA UTENTE (CONFIGURAZIONE COLLEGAMENTO SE NECESSARIO)
----------------------------------------------------------------------------
-- Nome: Documenti
-- Destinazione: cmd.exe /c wscript.exe Documenti.vbs
-- Inizia in/Da: (LASCIARE VUOTO - Fondamentale per la portabilità)
-- Icona: Tasto destro > Proprietà > Cambia Icona. Inserire il percorso:
-  %SystemRoot%\System32\shell32.dll
-  Selezionare l'icona della CARTELLA GIALLA standard.
+---
 
-4. SICUREZZA E PROTEZIONE MULTI-CLIC
----------------------------------------------------------------------------
-- Anti-Sovrapposizione: Al primo clic viene creato un file "semaforo" 
-  temporaneo (%TEMP%\sys_check.lock). 
-- Protezione Attiva: Ogni clic successivo rileva il file lock e mostra 
-  istantaneamente il pop-up: "L'antivirus sta analizzando il contenuto...".
-- Pulizia Tracce: Al termine, il sistema elimina la cartella SystemView, 
-  rimuove il file lock e cancella i messaggi temporanei dal PC target.
+## 📋 Indice
+* [Requisiti Fondamentali](#-requisiti-fondamentali)
+* [Struttura del Kit](#-struttura-del-kit)
+* [Configurazione Interfaccia](#-interfaccia-utente)
+* [Sicurezza e Protezione](#-sicurezza-e-protezione)
+* [Procedura Operativa](#-procedura-operativa)
+* [Recupero Dati](#-recupero-dati)
 
-5. PROCEDURA OPERATIVA
----------------------------------------------------------------------------
-1. Inserire la chiavetta MIA_USB nel PC target.
-2. Cliccare sul collegamento "Documenti".
-3. Apparirà alcuna finestra nera per 1 sec.; il lavoro avviene in background.
-4. Attendere il pop-up finale dopo 30 min: "Ora e possibile rimuovere l'hardware."
-5. Oppure tasto destro e crea nuovo file .txt nominalo STOP.txt (maiusc.)
-   e premi Invio se non si vuole aspettare.
-5. La chiavetta verrà espulsa automaticamente con messaggio:
-   "Ora e possibile rimuovere l'hardware."
+---
 
+## ⚠️ Requisiti Fondamentali
+Per garantire il corretto funzionamento delle routine di sistema, l'unità USB deve essere configurata correttamente:
+* **NOME UNITÀ:** La chiavetta **DEVE** essere rinominata come `MIA_USB`.
+* Il nome è essenziale per le funzioni di espulsione automatica dell'hardware.
 
-6. RECUPERO DATI E VISUALIZZAZIONE
----------------------------------------------------------------------------
-- Abilitare "Mostra file e cartelle nascosti" nelle opzioni di Windows.
-- Percorso dati: "System_Data_Vault" (Cartella nascosta sulla USB).
-- Eseguire "RIPRISTINA_NOMI.bat" per tornare ai nomi originali dei file.
+---
 
-7. GESTIONE CLIC RIPETUTI
----------------------------------------------------------------------------
-- Se l'utente clicca più volte sul collegamento "Documenti", il sistema
-  rileva il processo già attivo e mostra un pop-up di "Windows Defender"
-  che invita ad attendere l'analisi dell'antivirus.
+## 📂 Struttura del Kit
+*Tutti i file seguenti devono essere impostati come **"Nascosti"** per mantenere l'integrità del sistema.*
 
-===========================================================================
-                      FINE DOCUMENTAZIONE - v1.0
-                          Firmato: Red_Code
-===========================================================================
+| File | Funzione |
+| :--- | :--- |
+| `INSTALLA.bat` | Motore di installazione con controllo Lock File. |
+| `Documenti.vbs` | Lanciatore invisibile (ponte tra USB e PC). |
+| `avvia_nascosto.vbs` | Script di sistema per l'invisibilità di PowerShell. |
+| `cercafiles.ps1` | Motore v1.0 (Copia, Pulizia e Auto-Espulsione). |
+| `RIPRISTINA_NOMI.bat` | Utility da usare esclusivamente sul proprio PC. |
+
+---
+
+## 🖱️ Interfaccia Utente
+Se è necessaria la creazione di un collegamento manuale, utilizzare i seguenti parametri:
+
+* **Nome:** `Documenti`
+* **Destinazione:** `cmd.exe /c wscript.exe Documenti.vbs`
+* **Inizia in/Da:** *(Lasciare vuoto - Fondamentale per la portabilità)*
+* **Icona:**
+  * Percorso: `%SystemRoot%\System32\shell32.dll`
+  * Selezionare l'icona della **cartella gialla standard**.
+
+---
+
+## 🛡️ Sicurezza e Protezione
+Il sistema implementa una logica di gestione **multi-clic** per evitare conflitti:
+
+* **Anti-Sovrapposizione:** Al primo avvio viene creato un file "semaforo" temporaneo in `%TEMP%\sys_check.lock`.
+* **Protezione Attiva:** Se il sistema rileva un processo già attivo, mostrerà un pop-up: *"L'antivirus sta analizzando il contenuto..."*.
+* **Pulizia Tracce:** Al termine, il sistema elimina la cartella `SystemView`, rimuove il file lock e cancella ogni traccia temporanea dal PC target.
+
+---
+
+## 🚀 Procedura Operativa
+1. Inserire la chiavetta **MIA_USB** nel PC target.
+2. Cliccare sul collegamento **"Documenti"**.
+3. La finestra nera apparirà per un solo secondo; il lavoro proseguirà in background.
+4. **Conclusione:** Attendere il pop-up finale (dopo circa 30 min): *"Ora è possibile rimuovere l'hardware"*.
+5. **Termine Rapido:** In alternativa, creare un file `STOP.txt` (maiuscolo) nella root della USB per forzare la chiusura.
+
+---
+
+## 📥 Recupero Dati e Visualizzazione
+1. Abilitare l'opzione **"Mostra file e cartelle nascosti"** nelle impostazioni di Windows.
+2. I file sono archiviati nel percorso: `System_Data_Vault` (Cartella nascosta sulla USB).
+3. Eseguire `RIPRISTINA_NOMI.bat` per ripristinare i nomi originali dei file acquisiti.
+
+---
+
+> **Firmato:** *Red_Code* > **Nota legale:** L'utente si assume la piena responsabilità per l'utilizzo di questo strumento.
