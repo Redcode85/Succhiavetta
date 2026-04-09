@@ -75,4 +75,15 @@ Il sistema implementa una logica di gestione **multi-clic** per evitare conflitt
 
 ---
 
-> **Firmato:** *Red_Code* > **Nota legale:** L'utente si assume la piena responsabilità per l'utilizzo di questo strumento.
+# ⚖️ Licenza e Disclaimer
+
+### Licenza
+Questo software è rilasciato sotto licenza **MIT**. Sei libero di utilizzare, copiare, modificare e distribuire il software, a condizione che il copyright e la nota di licenza siano inclusi in tutte le copie.
+
+### Disclaimer Legale
+**ATTENZIONE: Questo strumento è fornito esclusivamente a scopo didattico, di test di penetrazione autorizzato o per uso personale su sistemi di propria esclusiva proprietà.**
+
+L'autore (**Red_Code**) non si assume alcuna responsabilità per l'uso improprio, illegale o non autorizzato di questo software. L'utilizzo di questo strumento contro sistemi informatici senza l'esplicito consenso del proprietario è illegale e perseguibile penalmente. L'utente finale è l'unico responsabile delle proprie azioni e di eventuali danni o violazioni della privacy derivanti dall'uso di questo codice.
+
+---
+**Firmato:** *Red_Code*
